@@ -127,7 +127,7 @@
         border-bottom-color: white;
         border-width: 9px;
     }
-    a.menutoggle {
+    a.menutoggle .icon-caret{
         display: none !important;
     }
     #apps-management {
