@@ -1,4 +1,4 @@
-@media only screen and (min-width: 770px) {
+@media only screen and (min-width: <?php p($_['width']); ?>px) {
 	#navigation {
 		margin: 0;
 		padding: 0;
@@ -26,7 +26,6 @@
 
 	#navigation div ul {
 		position: relative;
-		margin-left: 170px;
 	}
 
 	#navigation div ul:after {
@@ -95,11 +94,11 @@
 	}
 
 	#navigation div li:hover a {
-		position: relative
+        position: relative;
 	}
 
 	#navigation div li:hover span {
-		display: block
+        display: block;
 	}
 
 	#navigation div li:hover span {
@@ -160,6 +159,10 @@
 	#navigation svg image {
 		width: 100%;
 		height: 100%;
+<?php if($_['inverted']===false) { ?>
+		-webkit-filter: none;
+		filter: none;
+<?php } ?>
 	}
 
 	#navigation a svg,
@@ -175,4 +178,12 @@
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 		opacity: 1;
 	}
+    #navigation a img, #navigation a span {
+        -khtml-opacity: 0.4;
+        -moz-opacity: 0.4;
+        opacity: 0.4;
+        -ms-filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=40);
+        filter: progid: DXImageTransform.Microsoft.Alpha(opacity=40);
+        filter: alpha(opacity=40);
+    }
 }

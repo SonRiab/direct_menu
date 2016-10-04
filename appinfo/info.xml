@@ -3,13 +3,13 @@
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>direct_menu</id>
     <name>Direct Menu</name>
-    <description>Provide easy access to all active apps on top.</description>
+    <description>Provide easy access to all apps in the header.</description>
     <category>customization</category>
-    <version>0.9.1</version>
+    <version>0.9.2</version>
     <licence>AGPL</licence>
     <author>Julius Härtl</author>
     <dependencies>
-        <owncloud min-version="8.0" max-version="9.2" />
+        <owncloud min-version="9.0" max-version="9.2" />
         <nextcloud min-version="9" max-version="11" />
     </dependencies>
     <repository type="git">https://github.com/juliushaertl/direct_menu.git</repository>
