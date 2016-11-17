@@ -1,23 +1,15 @@
 @media only screen and (min-width: <?php p($_['width']); ?>px) {
 	#navigation {
-		margin: 0;
-		padding: 0;
-		position: absolute;
-		top: 0;
-		left: 80px;
-		box-shadow: none;
-		overflow: visible !important;
-	}
-
-	#navigation {
 		width: auto;
-		padding: 0;
-		margin: 0;
 		padding: 0;
 		margin: 0;
 		background-color: transparent;
 		display: block !important;
 		position: fixed;
+		top: 0;
+		left: 80px;
+		box-shadow: none;
+		overflow: visible !important;
 	}
 
 	#navigation #apps {
