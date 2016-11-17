@@ -11,11 +11,9 @@ $(document).ready(function () {
 		if (this.checked) {
 			$('#header a.menutoggle').hide();
 			$('#navigation div ul').css('margin-left', 0);
-			$('#navigation a svg').css('opacity', 0.5);
 		} else {
 			$('#header a.menutoggle').show();
 			$('#navigation div ul').css('margin-left', '170px');
-			$('#navigation a svg').css('opacity', 0.9);
 		}
 		$.post(OC.generateUrl('/apps/direct_menu/ajax/setHideAppName'),	{
 			value: $(this).attr('value')

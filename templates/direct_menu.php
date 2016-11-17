@@ -157,7 +157,7 @@
 	#navigation a svg,
 	#navigation a span {
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-		opacity: .9;
+		opacity: .7;
 	}
 
 	#navigation a:hover svg,
@@ -176,11 +176,5 @@
 	#navigation div ul {
 		margin-left: 0;
 	}
-	
-	#navigation a svg {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-		opacity: .5;
-	}
-	
 <?php } ?>
 }
