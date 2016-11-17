@@ -3,6 +3,7 @@
  * @copyright Copyright (c) 2016 Julius Härtl <jus@bitgrid.net>
  *
  * @author Julius Härtl <jus@bitgrid.net>
+ * @author Rene Jablonski <rene@vnull.de>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -21,17 +22,36 @@
  *
  */
 
-namespace OCA\Direct_menu\Controller;
+namespace OCA\DirectMenu\Controller;
+use OCA\DirectMenu\DirectMenu;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Http\DataDownloadResponse;
+use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\IRequest;
+use OCP\IConfig;
+use OCP\IL10N;
 
 class AppController extends \OCP\AppFramework\Controller {
+	
+	/** @var IConfig */
+	private $config;
+	
+	/** @var ITimeFactory */
+	private $timeFactory;
+	
+	/** @var IL10N */
+	private $l10n;
 
-	public function __construct($appName, IRequest $request, ITimeFactory $timeFactory) {
+	/** @var DirectMenu */
+	private $directMenu;
+
+	public function __construct($appName, IRequest $request, ITimeFactory $timeFactory, IConfig $config, IL10N $l, DirectMenu $directMenu) {
 		parent::__construct($appName, $request);
 		$this->timeFactory = $timeFactory;
+		$this->config = $config;
+		$this->l10n = $l;
+		$this->directMenu = $directMenu;
 	}
 
 	/**
@@ -57,14 +77,28 @@ class AppController extends \OCP\AppFramework\Controller {
 
 		$params = [
 			'width' => $width,
-			'inverted' => $inverted
+			'inverted' => $inverted,
+			'hideAppName' => $this->config->getAppValue('direct_menu', 'hideAppName', 'no') === 'yes',
 		];
 		$template = new TemplateResponse('direct_menu', 'direct_menu', $params, 'blank');
-		$response = new DataDownloadResponse($template->render(), 'style', 'text/css');
+		$response = new DataDownloadResponse($template->render(), 'style.css', 'text/css');
 		$response->addHeader('Expires', date(\DateTime::RFC2822, $this->timeFactory->getTime()));
 		$response->addHeader('Pragma', 'cache');
 		$response->cacheFor(3600);
 		return $response;
+	}
+	
+	public function setHideAppName($value) {
+		$this->directMenu->updateHideAppName($value);
+		return new DataResponse(
+			[
+				'data' =>
+					[
+						'message' => $this->l10n->t('Saved')
+					],
+				'status' => 'success'
+			]
+		);
 	}
 
 }

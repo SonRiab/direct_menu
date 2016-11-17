@@ -156,7 +156,7 @@
 
 	#navigation a svg,
 	#navigation a span {
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 		opacity: .9;
 	}
 
@@ -167,4 +167,20 @@
 		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 		opacity: 1;
 	}
+/* <?php p($_['hideAppName']) ?> */
+<?php if($_['hideAppName']) { ?>
+	#header a.menutoggle {
+		display: none;
+	}
+	
+	#navigation div ul {
+		margin-left: 0;
+	}
+	
+	#navigation a svg {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+		opacity: .5;
+	}
+	
+<?php } ?>
 }

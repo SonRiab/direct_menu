@@ -26,5 +26,10 @@ return ['routes' => [
 		'name' => 'App#stylesheet',
 		'url' => '/styles',
 		'verb' => 'GET',
-	]]
-];
+	],
+	[
+		'name' => 'App#setHideAppName',
+		'url' => '/ajax/setHideAppName',
+		'verb' => 'POST',
+	]
+]];

@@ -21,7 +21,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-$linkToCSS = \OC::$server->getURLGenerator()->linkToRoute('direct_menu.App.stylesheet');
+$linkToCSS = \OC::$server->getURLGenerator()->linkToRoute('direct_menu.App.stylesheet', [
+	'h' => \OC::$server->getConfig()->getAppValue('direct_menu', 'hideAppName', 'no'),
+]);
 \OCP\Util::addHeader(
 	'link',
 	[
@@ -29,3 +31,6 @@ $linkToCSS = \OC::$server->getURLGenerator()->linkToRoute('direct_menu.App.style
 		'href' => $linkToCSS,
 	]
 );
+
+$app = new \OCP\AppFramework\App('direct_menu');
+$app->getContainer()->registerCapability(\OCA\DirectMenu\Capabilities::class);
