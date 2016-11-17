@@ -48,11 +48,6 @@
 		color: #1d2d44 !important;
 	}
 
-	#navigation img.app-icon {
-		width: 20px;
-		height: 20px;
-	}
-
 	#navigation .app-loading .app-icon,
 	#navigation .app-loading svg {
 		display: none;
@@ -144,7 +139,8 @@
 		display: none !important;
 	}
 
-	#navigation svg {
+	#navigation svg,
+	#navigation img.app-icon {
 		width: 20px;
 		height: 20px;
 	}
